@@ -1,6 +1,8 @@
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>To-Do Liste</h1>
+    <p> Hier können Sie Ihre eigene To-Do Liste erstellen. </p>
   </div>
 </template>
 
