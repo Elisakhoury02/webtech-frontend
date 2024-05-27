@@ -14,20 +14,20 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </header>
 
-    <!-- Hauptinhalt -->
+
     <main>
       <div class="todo-list">
         <h1>Meine To-Do-Liste</h1>
       </div>
     </main>
 
-    <!-- Router-View für die dynamische Inhaltsanzeige -->
+
     <RouterView />
   </div>
 </template>
 
 <style scoped>
-/* Deine Stile hier */
+
 .todo-app {
   text-align: center;
 }

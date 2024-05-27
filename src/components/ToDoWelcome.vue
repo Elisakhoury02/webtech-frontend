@@ -1,15 +1,40 @@
 <template>
   <main class="welcome">
-    <h2>Willkommen auf deiner To-Do-Liste!</h2>
+    <h2>Willkommen auf deiner To-Do-Liste :) </h2>
     <p>Beginne damit, deine Aufgaben zu organisieren:</p>
     <ul>
-      <li v-for="(task, index) in tasks" :key="index">{{ task }}</li>
+      <li v-for="(task, index) in tasks" :key="index">
+        {{ task }}
+        <button @click="deleteTask(index)">Löschen</button>
+      </li>
     </ul>
+    <input v-model="newTask" type="text" placeholder="Neue Aufgabe hinzufügen">
+    <button @click="addTask(newTask)">Hinzufügen</button>
   </main>
 </template>
 
 <script setup lang="ts">
-const tasks = ['Erstelle eine neue Liste', 'Füge Elemente hinzu', 'Lösche Elemente, die erledigt sind'];
+import { ref } from 'vue';
+
+// Erstellen Sie eine ref, die ein Array von Aufgaben enthält
+const tasks = ref([
+  'Erstelle eine neue Liste',
+  'Füge Elemente hinzu',
+  'Lösche Elemente, die erledigt sind'
+]);
+
+// Erstellen Sie eine ref für die neue Aufgabe
+const newTask = ref('');
+
+// Funktion zum Hinzufügen einer neuen Aufgabe
+const addTask = (newTask: string) => {
+  tasks.value.push(newTask);
+};
+
+// Funktion zum Löschen einer Aufgabe
+const deleteTask = (taskIndex: number) => {
+  tasks.value.splice(taskIndex, 1);
+};
 </script>
 
 <style scoped>
@@ -49,6 +74,7 @@ const tasks = ['Erstelle eine neue Liste', 'Füge Elemente hinzu', 'Lösche Elem
 }
 
 .welcome li:hover {
-  background-color: #e2e8f0; /* Hintergrundfarbe ändern bei Hover */
+  background-color: #e2e8f0;
 }
 </style>
+

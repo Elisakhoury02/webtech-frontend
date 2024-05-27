@@ -6,7 +6,6 @@
 
 <script setup lang="ts">
 import TodoWelcome from '@/components/ToDoWelcome.vue';
-// Passe den Pfad entsprechend an
 </script>
 
 <style scoped>
@@ -17,10 +16,9 @@ import TodoWelcome from '@/components/ToDoWelcome.vue';
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  color: #000000; /* Schriftfarbe auf Schwarz ändern */
+  color: #000000;
 }
 
 </style>
-
 
 
