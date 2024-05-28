@@ -2,6 +2,22 @@
 defineProps<{
   msg: string
 }>()
+
+axios.get("localhost:8080/ToDos")
+    .then(function (response) {
+      // handle success
+      // console.log("response")
+      console.log(response);
+      pizzen.value = response.data
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
 </script>
 
 <template>
