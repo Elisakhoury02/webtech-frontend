@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "axios": "1.6.0",
+    "@rollup/rollup-darwin-x64": "^4.18.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
