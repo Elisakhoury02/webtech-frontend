@@ -16,14 +16,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-// ref, die ein Array von Aufgaben enthält
+// Erstellen Sie eine ref, die ein Array von Aufgaben enthält
 const tasks = ref([
   'Erstelle eine neue Liste',
   'Füge Elemente hinzu',
   'Lösche Elemente, die erledigt sind'
 ]);
 
-// ref für die neue Aufgabe
+// Erstellen Sie eine ref für die neue Aufgabe
 const newTask = ref('');
 
 // Funktion zum Hinzufügen einer neuen Aufgabe
