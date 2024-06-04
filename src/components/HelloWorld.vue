@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import axios from 'axios';
-
 defineProps<{
   msg: string
 }>()
 
-const ToDos = ref<any[]>([]);
-
 axios.get("localhost:8080/ToDos")
-    .then(function (response: any) {
+    .then(function (response) {
+      // handle success
+      // console.log("response")
       console.log(response);
-      ToDos.value = response.data
+      pizzen.value = response.data
     })
-    .catch(function (error: any) {
+    .catch(function (error) {
+      // handle error
       console.log(error);
     })
     .finally(function () {
+      // always executed
     });
 
 </script>
