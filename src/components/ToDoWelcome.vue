@@ -1,4 +1,3 @@
-
 <template>
   <main class="welcome">
     <h2>Willkommen auf deiner To-Do-Liste :) </h2>
@@ -78,3 +77,4 @@ const deleteTask = (taskIndex: number) => {
   background-color: #e2e8f0;
 }
 </style>
+
