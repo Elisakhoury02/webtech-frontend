@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import {onMounted, ref} from 'vue';
 interface Task {
   title: string;
   description: string;
@@ -25,6 +25,21 @@ interface Task {
 const tasks = ref<Task[]>([]);
 const newTaskTitle = ref('');
 const newTaskDescription = ref('');
+const newTask = ref<Task>({ title: newTaskTitle.value, description: newTaskDescription.value, completed: false });
+
+// Funktion zum Laden der Aufgaben vom Backend
+const loadThings = async () => {
+  const endpoint = "http://localhost:8080/ToDos"
+  const requestOptions = {
+    method: 'GET',
+    redirect: 'follow' as RequestRedirect
+  }
+  const response = await fetch(endpoint, requestOptions);
+  const result = await response.json();
+  result.forEach((thing: any) => {
+    tasks.value.push(thing);
+  });
+}
 
 const addTask = (title: string, description: string) => {
   const newTask: Task = {
@@ -40,4 +55,9 @@ const addTask = (title: string, description: string) => {
 const deleteTask = (taskIndex: number) => {
   tasks.value.splice(taskIndex, 1);
 };
+
+// Laden der Aufgaben beim Mounten der Komponente
+onMounted(loadThings);
+
+
 </script>
