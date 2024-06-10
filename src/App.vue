@@ -27,7 +27,6 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-
 .todo-app {
   text-align: center;
 }
@@ -37,7 +36,9 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 .todo-list h1 {
-  font-size: 1.5rem;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .todo-list ul {
@@ -47,5 +48,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 .todo-list li {
   margin-top: 0.5rem;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.2rem;
 }
 </style>

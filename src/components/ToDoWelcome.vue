@@ -10,7 +10,7 @@
     </ul>
     <input v-model="newTaskTitle" type="text" placeholder="Neue Aufgabe hinzufügen">
     <input v-model="newTaskDescription" type="text" placeholder="Neue Beschreibung hinzufügen">
-    <button @click="addTask(newTaskTitle, newTaskDescription)">Hinzufügen</button>
+    <button @click="addTask">Hinzufügen</button>
   </main>
 </template>
 
@@ -41,10 +41,11 @@ const loadThings = async () => {
   });
 }
 
-const addTask = (title: string, description: string) => {
+// Funktionen zum Hinzufügen und Löschen von Aufgaben
+const addTask = async () => {
   const newTask: Task = {
-    title: title,
-    description: description,
+    title: newTaskTitle.value,
+    description: newTaskDescription.value,
     completed: false
   };
   tasks.value.push(newTask);
