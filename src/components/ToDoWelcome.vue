@@ -34,7 +34,17 @@ const loadThings = async () => {
     method: 'GET',
     redirect: 'follow' as RequestRedirect
   }
-  const response = await fetch(endpoint, requestOptions);
+  let response;
+  try {
+    response = await fetch(endpoint, requestOptions);
+  } catch (error) {
+    console.error('There was a problem with the fetch operation: ', error);
+    return;
+  }
+  if (!response.ok) {
+    console.error(`HTTP error! status: ${response.status}`);
+    return;
+  }
   const result = await response.json();
   result.forEach((thing: any) => {
     tasks.value.push(thing);
