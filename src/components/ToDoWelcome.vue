@@ -29,18 +29,18 @@ const newTask = ref<Task>({ title: newTaskTitle.value, description: newTaskDescr
 
 // Funktion zum Laden der Aufgaben vom Backend
 const loadThings = async () => {
-}
-  const baseURL = import.meta.env.VUE_APP_BACKEND_BASE_URL;
+  const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
   const endpoint = "http://localhost:8080/ToDos"
   const requestOptions = {
     method: 'GET',
     redirect: 'follow' as RequestRedirect
   }
-  const response = await fetch(endpoint, requestOptions);
+  const response = await fetch(baseURL, requestOptions);
   const result = await response.json();
   result.forEach((thing: any) => {
     tasks.value.push(thing);
   });
+};
 
 // Funktionen zum Hinzufügen und Löschen von Aufgaben
 const addTask = async () => {
