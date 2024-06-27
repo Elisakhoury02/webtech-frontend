@@ -30,7 +30,7 @@ const newTask = ref<Task>({ title: newTaskTitle.value, description: newTaskDescr
 // Funktion zum Laden der Aufgaben vom Backend
 const loadThings = async () => {
   const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
-  const endpoint = "https://webtech-backend-6ifr.onrender.com/ToDos"
+  const endpoint = "http://localhost:8080/ToDos"
   const requestOptions = {
     method: 'GET',
     redirect: 'follow' as RequestRedirect
