@@ -43,7 +43,7 @@ const loadThings = async () => {
 };
 
 // Funktionen zum Hinzufügen und Löschen von Aufgaben
-/**const addTask = async () => {
+const addTask = async () => {
   const newTask: Task = {
     title: newTaskTitle.value,
     description: newTaskDescription.value,
@@ -52,33 +52,6 @@ const loadThings = async () => {
   tasks.value.push(newTask);
   newTaskTitle.value = '';
   newTaskDescription.value = '';
-};
-**/
-const addTask = async () => {
-  const newTask: Task = {
-    title: newTaskTitle.value,
-    description: newTaskDescription.value,
-    completed: false
-  };
-
-  // Füge diesen Teil hinzu, um die neue Aufgabe an das Backend zu schicken
-  const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
-  const response = await fetch(`${baseURL}/ToDos`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newTask)
-  });
-
-  if (response.ok) {
-    const result = await response.json();
-    tasks.value.push(result);
-    newTaskTitle.value = '';
-    newTaskDescription.value = '';
-  } else {
-    console.error('Fehler beim Hinzufügen der Aufgabe');
-  }
 };
 
 const deleteTask = (taskIndex: number) => {
