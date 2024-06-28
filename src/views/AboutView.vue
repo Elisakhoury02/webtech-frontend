@@ -1,17 +1,19 @@
-
 <template>
-  <div class="about">
-    <h1>To-Do Liste</h1>
-    <p> Hier können Sie Ihre eigene To-Do Liste erstellen. </p>
+  <div>
+    <h2>Über diese Anwendung</h2>
+    <p>Diese Anwendung hilft dir, deine Aufgaben zu organisieren und zu verwalten.</p>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<script setup lang="ts">
+</script>
+
+<style scoped>
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1.2rem;
 }
 </style>

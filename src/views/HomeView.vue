@@ -1,24 +1,89 @@
 <template>
   <div>
-    <TodoWelcome />
+    <h2>Willkommen auf deiner To-Do-Liste :)</h2>
+    <p>Wähle eine bereits vorhandene Kategorie aus oder erstelle eine neue:</p>
+    <div class="categories">
+      <ul>
+        <li v-for="(category, index) in categories" :key="index">
+          <RouterLink :to="`/category/${category.name}`">{{ category.name }}</RouterLink>
+        </li>
+      </ul>
+      <div class="add-category">
+        <input v-model="newCategoryName" type="text" placeholder="Neue Kategorie">
+        <button @click="addCategory">Hinzufügen</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import TodoWelcome from '@/components/ToDoWelcome.vue';
+import { ref } from 'vue';
+
+const categories = ref([{ name: 'Arbeit' }, { name: 'Persönlich' }]);
+const newCategoryName = ref('');
+
+const addCategory = () => {
+  if (newCategoryName.value.trim() !== '') {
+    categories.value.push({ name: newCategoryName.value });
+    newCategoryName.value = '';
+  }
+};
 </script>
 
 <style scoped>
-.welcome {
-  text-align: center;
-  margin-top: 2rem;
-  padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  color: #000000;
+h2 {
+  font-family: 'Times New Roman';
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
 }
 
+p {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+}
+
+.categories {
+  margin-top: 1.8rem;
+}
+
+.categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.categories li {
+  margin-top: 1rem;
+}
+
+.categories li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
+
+.add-category {
+  margin-top: 1.5rem;
+}
+
+.add-category input {
+  margin-right: 5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.add-category button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-category button:hover {
+  background-color: #45a049;
+}
 </style>
-
-

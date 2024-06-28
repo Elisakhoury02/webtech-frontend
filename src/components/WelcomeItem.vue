@@ -12,7 +12,12 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped >
+
+body {
+  background-color: #2475bf;
+}
+
 .item {
   margin-top: 2rem;
   display: flex;
