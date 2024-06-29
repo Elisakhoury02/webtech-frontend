@@ -3,15 +3,21 @@
     <h2>To-Dos für Kategorie: {{ categoryName }}</h2>
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
+        <h3>{{ task.title }}</h3> <!-- Text als Überschrift -->
         <input type="checkbox" v-model="task.completed" />
-        {{ task.title }} - {{ task.description }} - Erledigt: {{ task.completed }} - Deadline: {{ task.deadline }}
+        {{ task.description }} - Erledigt: {{ task.completed }}
+        <h3>Deadline</h3> <!-- "Deadline" als Überschrift -->
+        {{ task.deadline }}
         <button @click="deleteTask(index)">Löschen</button>
       </li>
     </ul>
     <div class="add-task">
-      <input v-model="newTaskTitle" type="text" placeholder="Neue Aufgabe">
-      <input v-model="newTaskDescription" type="text" placeholder="Neue Beschreibung">
-      <input v-model="newTaskDeadline" type="date" placeholder="Deadline">
+      <h3>Neue Aufgabe</h3> <!-- Überschrift für das To-Do Eingabefeld -->
+      <input v-model="newTaskTitle" type="text" >
+      <h3>Neue Beschreibung</h3> <!-- Überschrift für das Beschreibung Eingabefeld -->
+      <input v-model="newTaskDescription" type="text" >
+      <h3>Deadline</h3> <!-- Überschrift für das Datum Eingabefeld -->
+      <input v-model="newTaskDeadline" type="date" >
       <button @click="addTask">Hinzufügen</button>
     </div>
   </div>
@@ -62,20 +68,31 @@ onMounted(loadTasks);
 
 <style scoped>
 h2 {
-  font-family: 'Times New Roman', serif;
-  font-size: 1.8rem;
+  font-family: 'Arial', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem; /* Erhöht den Abstand unter der Überschrift */
+  color: #6d1681;
 }
 
 ul {
   list-style: none;
   padding: 0;
+
 }
 
 li {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
+  margin-top: 0.9rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
+
+}
+
+h3 {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 </style>

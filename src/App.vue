@@ -5,7 +5,7 @@
       <div class="wrapper">
         <nav>
           <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/about">Organizer</RouterLink>
         </nav>
       </div>
     </header>
@@ -120,7 +120,7 @@ header a {
 }
 
 .notes-section h2 {
-  font-family: 'Times New Roman'  ;
+  font-family: 'Arial'  ;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -146,14 +146,14 @@ header a {
 }
 
 .calendar-section h3 {
-  font-family: 'Times New Roman', serif;
+  font-family: 'Arial', serif;
   font-size: 1.2rem;
 }
 
 .calendar-section input {
   width: 100%;
   padding: 0.5rem;
-  font-size: 1,3rem;
+  font-size: 1.3rem;
   border: 1px solid #ccc;
   border-radius: 8px;
 }

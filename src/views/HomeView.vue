@@ -32,37 +32,48 @@ const addCategory = () => {
 
 <style scoped>
 h2 {
-  font-family: 'Times New Roman';
-  font-size: 2.3rem;
+  font-family: 'Arial';
+  font-size: 2.2rem;
   margin-bottom: 2rem;
+  text-align: center;
+  color: #6d1681;
 }
 
 p {
   font-family: 'Arial', sans-serif;
-  font-size: 1.2rem;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 .categories {
   margin-top: 1.8rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
 }
 
 .categories ul {
   list-style: none;
   padding: 0;
+  text-decoration: #e9c7ef;
 }
 
 .categories li {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
+  text-decoration: #e9c7ef;
+  font-size: 1.1rem;
 }
 
 .categories li a {
   text-decoration: none;
   color: #333;
   font-size: 1rem;
+  background-color: #e9c7ef;
 }
 
 .add-category {
   margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .add-category input {
@@ -71,12 +82,13 @@ p {
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
+  width: 100%;
 }
 
 .add-category button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background-color: #4CAF50;
+  background-color: #6d1681;
   color: white;
   border: none;
   border-radius: 8px;
