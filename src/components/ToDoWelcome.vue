@@ -1,9 +1,10 @@
 <template>
   <main class="welcome">
-    <h2>Willkommen auf deiner To-Do-Liste :) </h2>
+    <h2>Willkommen auf deiner To-Do-Liste :)</h2>
     <p>Beginne damit, deine Aufgaben zu organisieren:</p>
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
+        <input type="checkbox" v-model="task.completed" @change="toggleTaskCompletion(index)" />
         {{ task.title }} - {{ task.description }} - Erledigt: {{ task.completed }}
         <button @click="deleteTask(index)">Löschen</button>
       </li>
@@ -13,6 +14,7 @@
     <button @click="addTask">Hinzufügen</button>
   </main>
 </template>
+
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
@@ -35,6 +37,11 @@ const loadThings = async () => {
     method: 'GET',
     redirect: 'follow' as RequestRedirect
   }
+
+
+
+
+
   const response = await fetch(baseURL, requestOptions);
   const result = await response.json();
   result.forEach((thing: any) => {
@@ -61,5 +68,9 @@ const deleteTask = (taskIndex: number) => {
 // Laden der Aufgaben beim Mounten der Komponente
 onMounted(loadThings);
 
+//Checkbox hinzufügen
+const toggleTaskCompletion = (index: number) => {
+  tasks.value[index].completed = !tasks.value[index].completed;
+};
 
 </script>
