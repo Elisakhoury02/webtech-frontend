@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import axios from "axios";
 
 interface Task {
   title: string;
@@ -54,8 +55,17 @@ const addTask = async () => {
 };
 
 const deleteTask = (taskIndex: number) => {
-  tasks.value.splice(taskIndex, 1);
-};
+  deleteTodo(taskIndex)
+}
+
+async function deleteTodo(id: number) {
+  const url = 'https://webtech-backend-6ifr.onrender.com/deleteTodos'
+  const endpoint = url + '/' + id
+  console.log('delete url', endpoint)
+  const response = await axios.delete(endpoint)
+  console.log('Success:', response.data)
+  return response.data;
+}
 
 // Laden der Aufgaben beim Mounten der Komponente
 onMounted(loadTasks);
