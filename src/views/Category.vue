@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import axios, { type AxiosResponse } from 'axios';
+import axios, { type AxiosResponse } from 'axios'
 
 interface Task {
   title: string;
@@ -54,10 +54,10 @@ const loadTasks = async () => {
 };
 
 async function getTodos(){
-  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos';
-  const response = await axios.get(url);
+  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos'
+  const response = await axios.get(url)
   const responseData: Task[] = response.data;
-  console.log('Success:', response.data);
+  console.log('Success:', response.data)
   return responseData;
 }
 
@@ -75,9 +75,9 @@ const addTask = () => {
 };
 
 async function postTodo(task: Task){
-  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos';
-  const response: AxiosResponse = await axios.post(url, task);
-  console.log('Success:', response.data);
+  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos'
+  const response: AxiosResponse = await axios.post(url, task)
+  console.log('Success:', response.data)
   return response.data;
 }
 
