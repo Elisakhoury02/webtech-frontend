@@ -54,7 +54,7 @@ const loadTasks = async () => {
 };
 
 async function getTodos(){
-  const url = 'https://webtech-backend-6ifr.onrender.com/todos';
+  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos';
   const response = await axios.get(url);
   const responseData: Task[] = response.data;
   console.log('Success:', response.data);
@@ -75,7 +75,7 @@ const addTask = () => {
 };
 
 async function postTodo(task: Task){
-  const url = 'https://webtech-backend-6ifr.onrender.com/todos';
+  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos';
   const response: AxiosResponse = await axios.post(url, task);
   console.log('Success:', response.data);
   return response.data;
