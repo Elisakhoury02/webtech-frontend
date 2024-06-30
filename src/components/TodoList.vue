@@ -1,43 +1,5 @@
-<template>
-  <div class="todo-app">
-    <!-- Header -->
-    <header>
-      <div class="wrapper">
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Logo Bereich -->
-    <section class="logo-section">
-      <img src="@/assets/logo.svg" alt="Logo" class="logo" />
-    </section>
-
-
-    <main class="welcome">
-      <h2>Willkommen auf deiner To-Do-Liste :)</h2>
-      <p>Beginne damit, deine Aufgaben zu organisieren:</p>
-      <ul>
-        <li v-for="(task, index) in tasks" :key="index">
-          {{ task.title }} - {{ task.description }} - Erledigt: {{ task.completed }}
-          <button @click="deleteTask(index)">Löschen</button>
-        </li>
-      </ul>
-      <div class="add-task">
-        <input v-model="newTaskTitle" type="text" placeholder="Neue Aufgabe ">
-        <input v-model="newTaskDescription" type="text" placeholder="Neue Beschreibung ">
-        <button @click="addTask">Hinzufügen</button>
-      </div>
-    </main>
-    <RouterView />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
 
 interface Task {
   title: string;
@@ -48,10 +10,9 @@ interface Task {
 const tasks = ref<Task[]>([]);
 const newTaskTitle = ref('');
 const newTaskDescription = ref('');
-const newTask = ref<Task>({ title: '', description: '', completed: false });
 
 // Funktion zum Laden der Aufgaben vom Backend
-const loadThings = async () => {
+const loadTasks = async () => {
   const baseURL = import.meta.env.VITE_APP_BACKEND_BASE_URL;
   const endpoint = `${baseURL}/ToDos`;
   const requestOptions = {
@@ -84,9 +45,9 @@ const addTask = async () => {
 
   // Überprüfen, ob die Anforderung erfolgreich war
   if (response.ok) {
-    tasks.value.push(result); // Die vom Backend zurückgegebene Aufgabe hinzufügen
     newTaskTitle.value = '';
     newTaskDescription.value = '';
+    await loadTasks(); // Aufgabenliste nach dem Hinzufügen einer neuen Aufgabe aktualisieren
   } else {
     console.error('Fehler beim Hinzufügen der Aufgabe:', result);
   }
@@ -97,7 +58,7 @@ const deleteTask = (taskIndex: number) => {
 };
 
 // Laden der Aufgaben beim Mounten der Komponente
-onMounted(loadThings);
+onMounted(loadTasks);
 </script>
 
 <style>
