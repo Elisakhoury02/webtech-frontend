@@ -75,7 +75,7 @@ const addTask = () => {
 };
 
 async function postTodo(task: Task){
-  const url = 'https://webtech-backend-6ifr.onrender.com/Todos'
+  const url = 'https://webtech-backend-6ifr.onrender.com/ToDos'
   const response: AxiosResponse = await axios.post(url, task)
   console.log('Success:', response.data)
   return response.data;
